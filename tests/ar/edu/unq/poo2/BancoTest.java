@@ -7,18 +7,19 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 public class BancoTest {
     Banco banco;
-    Cliente cliente;
-
+    Cliente cliente = new Cliente(
+            "Ezequie",
+            "k",
+            "H. yrigoyen",
+            30,
+            1000
+    );
+    SolicitudDeCredito creditoSencillo = new CreditoPersonal(12000, 12, cliente);
+    SolicitudDeCredito creditoSencilloSpy;
     @BeforeEach
     public void setup(){
         banco = new Banco();
-        cliente = new Cliente(
-                "Ezequie",
-                "k",
-                "H. yrigoyen",
-                30,
-                1000
-        );
+        creditoSencilloSpy = spy(creditoSencillo);
     }
 
     @Test
@@ -30,17 +31,22 @@ public class BancoTest {
 
 
     @Test
-    public void aumentaElMontoADesembolsarEnCreditos(){
-        SolicitudDeCredito credito = new CreditoPersonal(12000, 12, cliente);
+    public void aumentaElMontoADesembolsarEnCreditosValidos(){
+        doReturn(true).when(creditoSencilloSpy).esAceptable();
 
-        SolicitudDeCredito creditoSpy = spy(credito);
-        doReturn(true).when(creditoSpy).esAceptable();
+        Assertions.assertEquals(0, banco.montoADesembolsarPorCreditos());
+        banco.agregarSolicitudDeCredito(creditoSencilloSpy);
+        Assertions.assertEquals(12000, banco.montoADesembolsarPorCreditos());
+
+    }
+
+    @Test
+    public void noAumentaElMontoADesembolsarEnCreditoInvalidos(){
+        doReturn(false).when(creditoSencilloSpy).esAceptable();
 
 
         Assertions.assertEquals(0, banco.montoADesembolsarPorCreditos());
-        banco.agregarSolicitudDeCredito(creditoSpy);
-
-        Assertions.assertEquals(12000, banco.montoADesembolsarPorCreditos());
-
+        banco.agregarSolicitudDeCredito(creditoSencilloSpy);
+        Assertions.assertEquals(0, banco.montoADesembolsarPorCreditos());
     }
 }

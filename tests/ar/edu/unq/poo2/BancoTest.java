@@ -14,7 +14,12 @@ public class BancoTest {
             30,
             1000
     );
-    SolicitudDeCredito creditoSencillo = new CreditoPersonal(12000, 12, cliente);
+    SolicitudDeCredito creditoSencillo = new SolicitudDeCredito(12000, 12, cliente) {
+        @Override
+        public boolean esAceptable() {
+            return false;
+        }
+    };
     SolicitudDeCredito creditoSencilloSpy;
     @BeforeEach
     public void setup(){
@@ -43,7 +48,6 @@ public class BancoTest {
     @Test
     public void noAumentaElMontoADesembolsarEnCreditoInvalidos(){
         doReturn(false).when(creditoSencilloSpy).esAceptable();
-
 
         Assertions.assertEquals(0, banco.montoADesembolsarPorCreditos());
         banco.agregarSolicitudDeCredito(creditoSencilloSpy);

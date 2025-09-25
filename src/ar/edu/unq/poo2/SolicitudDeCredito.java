@@ -3,7 +3,7 @@ package ar.edu.unq.poo2;
 public abstract class SolicitudDeCredito {
     private double monto;
     private int plazo_en_meses;
-    private Cliente solicitante;
+    protected Cliente solicitante;
     public SolicitudDeCredito(double monto, int plazo_en_meses, Cliente cliente){
         this.monto = monto;
         this.plazo_en_meses = plazo_en_meses;

@@ -7,6 +7,6 @@ public class CreditoPersonal extends SolicitudDeCredito{
 
     @Override
     public boolean esAceptable() {
-        return false;
+        return solicitante.sueldoNetoAnual() > 15000 && (this.montoMensual() < solicitante.sueldoNeto() * 0.7);
     }
 }

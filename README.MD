@@ -79,4 +79,4 @@ Desde la gerencia se solicita implementar un sistema que permita al banco, entre
 ---
 
 ## UML 
-![TP-SOLID.drawio.svg](TP-SOLID.drawio.svg)
+![TP-SOLID.jpg](TP-SOLID.jpg)

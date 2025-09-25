@@ -20,4 +20,7 @@ public abstract class SolicitudDeCredito {
         return this.monto;
     }
 
+    public int plazoEnMeses(){
+        return  this.plazo_en_meses;
+    }
 }

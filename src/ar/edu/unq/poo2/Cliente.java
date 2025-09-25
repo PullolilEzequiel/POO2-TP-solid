@@ -22,4 +22,8 @@ public class Cliente {
     public double sueldoNeto() {
         return this.sueldo_neto;
     }
+
+    public int edad(){
+        return  this.edad;
+    }
 }

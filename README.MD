@@ -75,3 +75,8 @@ Desde la gerencia se solicita implementar un sistema que permita al banco, entre
 
 3. **Implementación en Java con TDD**
     - A partir del diseño anterior, realizar la implementación usando **Test Driven Development**.  
+
+---
+
+## UML 
+![TP-SOLID.drawio.svg](TP-SOLID.drawio.svg)

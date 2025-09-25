@@ -16,7 +16,7 @@ public abstract class SolicitudDeCredito {
         return this.monto / plazo_en_meses;
     }
 
-    public double monto(){
+    public double montoTotal(){
         return this.monto;
     }
 

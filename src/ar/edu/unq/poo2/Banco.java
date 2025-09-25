@@ -23,7 +23,7 @@ public class Banco {
         double montoTotal = 0;
         for(SolicitudDeCredito solicitud: this.solicitudes_pendientes){
             if(solicitud.esAceptable()){
-                montoTotal += solicitud.monto();
+                montoTotal += solicitud.montoTotal();
             }
         }
 

@@ -9,6 +9,6 @@ public class CreditoHipotecario extends SolicitudDeCredito{
 
     @Override
     public boolean esAceptable() {
-        return (this.montoMensual() < (solicitante.sueldoNeto() * 0.5)) && (monto() < inmueble_garantia.valorFiscal() *0.7) && (solicitante.edad() + (plazoEnMeses() / 12) < 65);
+        return (this.montoMensual() < (solicitante.sueldoNeto() * 0.5)) && (montoTotal() < inmueble_garantia.valorFiscal() *0.7) && (solicitante.edad() + (plazoEnMeses() / 12) < 65);
     }
 }
